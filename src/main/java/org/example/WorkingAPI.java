@@ -18,8 +18,8 @@ public class WorkingAPI {
 
     public static String getCityOfBirthURI() { return cityOfBirthURI; }
 
-    public static String returnJSONResponse(String uri) throws IOException {
-        Content getResult = Request.Get(uri).execute().returnContent();
+    public static String returnJSONResponse(String url) throws IOException {
+        Content getResult = Request.Get(url).execute().returnContent();
         return getResult.asString();
     }
 }

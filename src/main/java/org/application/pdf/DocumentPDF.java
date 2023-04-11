@@ -1,6 +1,5 @@
-package org.example;
+package org.application.pdf;
 
-import org.apache.pdfbox.contentstream.PDContentStream;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -10,16 +9,15 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class RecordPDF {
+public class DocumentPDF {
 
     private PDDocument document;
-    private PDPage page;
+    protected static PDPage page;
+    public static PDFont pdfFont;
     private final int[] widthArray = new int[] {60, 50, 55, 25, 30, 50, 50, 35, 40, 50, 50, 60, 20, 30};
     private final String[] headers = new String[] {"Фамилия", "Имя", "Отчество", "Пол", "Возраст",
             "Дата рождения", "Место рождения", "Индекс", "Страна", "Область", "Город", "Улица",
             "Дом", "Квартира"};
-
-    private PDFont pdfFont;
 
     public void setFont() throws IOException {
         pdfFont = PDType0Font.load(document, new File("D:\\PDF generator\\PDF-generator\\ArialMT.ttf"));
@@ -44,26 +42,14 @@ public class RecordPDF {
         stream.close();
     }
 
-    public void createTable(int n) throws IOException {
-        int initX = 5;
-        int initY = (int)page.getCropBox().getHeight() - 10;
-
-        int cellHeight = 8;
-
-        int rowCount = n+1;
-        int colCount = 14;
-
-
-        for(int i = 1; i <= rowCount; i++) {
-            for(int j = 1; j <= colCount; j++) {
-            }
-            initX = 5;
-            initY -= cellHeight;
-        }
-
-
-        document.save("D:\\PDF generator\\mypdf.pdf");
+    public void closeDoc() throws IOException {
+        saveDoc();
         document.close();
-        System.out.println("PDF created");
     }
+
+    public void saveDoc() throws IOException {
+        document.save("D:\\PDF generator\\mypdf.pdf");
+    }
+
+
 }

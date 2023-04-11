@@ -1,4 +1,4 @@
-package org.example;
+package org.application.api;
 
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
@@ -8,7 +8,6 @@ import java.io.IOException;
 public class WorkingAPI {
 
     final static private String cityOfBirthURI = "https://api.randomdatatools.ru/?unescaped=false&params=City";
-
     static private String mainInfoURI = "https://api.randomdatatools.ru/?typeName=all&unescaped=false&" +
             "params=LastName,FirstName,FatherName,Gender,DateOfBirth,YearsOld,Country,Region,City,Street,Apartment,House";
 

@@ -9,6 +9,7 @@ import org.apache.pdfbox.pdmodel.font.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 
 public class RecordPDF {
 
@@ -23,11 +24,16 @@ public class RecordPDF {
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
         contentStream.setStrokingColor(Color.DARK_GRAY);
-        contentStream.setLineWidth(0.7f);
+        contentStream.setLineWidth(0.5f);
 
-        int initX = 20;
+        int[] widthArray = new int[] {60, 50, 55, 25, 30, 50, 50, 35, 40, 50, 50, 60, 20, 30};
+        String[] headers = new String[] {"Фамилия", "Имя", "Отчество", "Пол", "Возраст", "Дата рождения",
+        "Место рождения", "Индекс", "Страна", "Область", "Город", "Улица", "Дом", "Квартира"};
+
+
+        int initX = 5;
         int initY = pageHeight - 10;
-        int cellHeight = 6;
+        int cellHeight = 8;
         int cellWidth = 36;
 
         int rowCount = n+1;
@@ -37,17 +43,17 @@ public class RecordPDF {
 
         for(int i = 1; i <= rowCount; i++) {
             for(int j = 1; j <= colCount; j++) {
-                contentStream.addRect(initX, initY, cellWidth, -cellHeight);
+                contentStream.addRect(initX, initY, widthArray[j-1], -cellHeight);
 
                 contentStream.beginText();
-                contentStream.newLineAtOffset(initX+5, initY-cellHeight+2);
-                contentStream.setFont(pdfFont, 4);
-                contentStream.showText("Информатика");
+                contentStream.newLineAtOffset(initX+1, initY-cellHeight+2);
+                contentStream.setFont(pdfFont, 6);
+                contentStream.showText(headers[j-1]);
                 contentStream.endText();
 
-                initX += cellWidth;
+                initX += widthArray[j-1];
             }
-            initX = 20;
+            initX = 5;
             initY -= cellHeight;
         }
 

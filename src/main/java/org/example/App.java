@@ -9,6 +9,6 @@ public class App {
         ProcessorJSON p = new ProcessorJSON();
         PeopleGenerator.printPeople(p.SplitData(p.modifyStructure(WorkingAPI.returnJSONResponse(WorkingAPI.getMainURI()))));
         */
-        RecordPDF.createFile(9);
+        RecordPDF.createFile(30);
     }
 }

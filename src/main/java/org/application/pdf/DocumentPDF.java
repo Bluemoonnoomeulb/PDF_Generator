@@ -4,7 +4,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.*;
-import org.application.PeopleInfoGenerator;
+import org.application.people_info.PeopleInfoGenerator;
 
 import java.awt.*;
 import java.io.File;
@@ -15,10 +15,11 @@ public class DocumentPDF {
     private PDDocument document;
     protected static PDPage page;
     public static PDFont pdfFont;
+    protected final static float fontSize = 6;
     public static PDPageContentStream contentStream;
 
     public void setFont() throws IOException {
-        pdfFont = PDType0Font.load(document, new File("D:\\PDF generator\\PDF-generator\\ArialMT.ttf"));
+        pdfFont = PDType0Font.load(document, new File("ArialMT.ttf"));
     }
 
     public void createDoc() throws IOException {
@@ -29,7 +30,7 @@ public class DocumentPDF {
         fillTable();
     }
 
-    public void startStream() {
+    private void startStream() {
         try {
             contentStream = new PDPageContentStream(document, page);
             contentStream.setStrokingColor(Color.DARK_GRAY);
@@ -40,12 +41,12 @@ public class DocumentPDF {
         }
     }
 
-    public void stopStream() throws IOException {
+    private void stopStream() throws IOException {
         contentStream.stroke();
         contentStream.close();
     }
 
-    public void fillTable() throws IOException {
+    private void fillTable() throws IOException {
         Table tablePDF = new Table();
         tablePDF.createTable(PeopleInfoGenerator.assembleAllPeopleInfo());
     }
@@ -54,10 +55,12 @@ public class DocumentPDF {
         stopStream();
         saveDoc();
         document.close();
+        File file = new File("result.pdf");
+        System.out.println("Файл создан. Путь: " + file.getAbsolutePath());
     }
 
-    public void saveDoc() throws IOException {
-        document.save("D:\\PDF generator\\mypdf.pdf");
+    private void saveDoc() throws IOException {
+        document.save("result.pdf");
     }
 
 

@@ -1,18 +1,17 @@
 package org.application.pdf;
 
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import java.io.IOException;
 
 public class Table {
 
-    public static int coordinateX = 5;
+    private final static int coordinateX = 5;
     public static int coordinateY = (int)DocumentPDF.page.getCropBox().getHeight() - 10;
     private final static String[] headers = new String[] {"Фамилия", "Имя", "Отчество", "Пол", "Возраст",
             "Дата рождения", "Место рождения", "Индекс", "Страна", "Область", "Город", "Улица",
             "Дом", "Квартира"};
-    public static int rowCount;
-    public static int colCount = 14;
-    public static int cellHeight = 8;
+    private static int rowCount;
+    private final static int colCount = 14;
+    private final static int cellHeight = 8;
 
     public void setRowCount(int rowCount) { this.rowCount = rowCount; }
 
@@ -26,29 +25,34 @@ public class Table {
         }
     }
 
-    public static class Row {
+    private static class Row {
         private final static int[] widthArray = new int[] {53, 50, 55, 20, 27, 50, 50, 28, 33, 67, 50, 67, 20, 30};
 
-        public static void createRow(String[] elements) throws IOException {
-            int initX = coordinateX;
+        private static void createRow(String[] peopleInfo) throws IOException {
+            int coordinateX1 = coordinateX;
 
-            for(int i = 1; i <= colCount; i++) {
-                DocumentPDF.contentStream.addRect(initX, coordinateY, widthArray[i-1], -cellHeight);
+            for(int i = 0; i < colCount; i++) {
+                DocumentPDF.contentStream.addRect(coordinateX1, coordinateY, widthArray[i], -cellHeight);
                 DocumentPDF.contentStream.beginText();
-                DocumentPDF.contentStream.newLineAtOffset(initX + 1, coordinateY - cellHeight + 2);
-
-                float text_width = (DocumentPDF.pdfFont.getStringWidth(elements[i-1]) / 1000.f) * 6;
-                while (text_width > widthArray[i-1]) {
-                    elements[i-1] = elements[i-1].substring(0, elements[i-1].length()-1);
-                    text_width = (DocumentPDF.pdfFont.getStringWidth(elements[i-1]) / 1000.f) * 6;
-                }
-                DocumentPDF.contentStream.setFont(DocumentPDF.pdfFont, 6);
-                DocumentPDF.contentStream.showText(elements[i-1]);
+                DocumentPDF.contentStream.newLineAtOffset(coordinateX1 + 1, coordinateY - cellHeight + 2);
+                DocumentPDF.contentStream.setFont(DocumentPDF.pdfFont, DocumentPDF.fontSize);
+                DocumentPDF.contentStream.showText(cutText(peopleInfo[i], widthArray[i]));
                 DocumentPDF.contentStream.endText();
 
-                initX += widthArray[i-1];
+                coordinateX1 += widthArray[i];
             }
             coordinateY -= cellHeight;
+        }
+
+        private static String cutText(String currentString, int cellWidth) throws IOException {
+            float lineWidth = (DocumentPDF.pdfFont.getStringWidth(currentString) / 1000.f) * DocumentPDF.fontSize;
+
+            while (lineWidth > cellWidth) {
+                currentString = currentString.substring(0, currentString.length()-1);
+                lineWidth = (DocumentPDF.pdfFont.getStringWidth(currentString) / 1000.f) * DocumentPDF.fontSize;
+            }
+
+            return currentString;
         }
 
     }

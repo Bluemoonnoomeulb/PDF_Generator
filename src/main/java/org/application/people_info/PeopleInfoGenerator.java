@@ -1,11 +1,10 @@
-package org.application;
+package org.application.people_info;
 
 import org.application.json.ProcessorJSON;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.application.api.WorkingAPI;
 
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
@@ -21,9 +20,11 @@ public class PeopleInfoGenerator {
     private static Set<Integer> generateIndex(int count) {
         Random random = new Random();
         Set<Integer> numberSet = new HashSet<>();
+        int length = 0;
 
-        for (int i = 0; i < count; i++) {
-            numberSet.add(random.nextInt(100000, 999999));
+        while (length < count) {
+            numberSet.add(random.nextInt(100000, 1000000));
+            if (numberSet.size() == length + 1) { length++; }
         }
 
         return numberSet;

@@ -4,6 +4,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.*;
+import org.application.PeopleInfoGenerator;
 
 import java.awt.*;
 import java.io.File;
@@ -14,35 +15,43 @@ public class DocumentPDF {
     private PDDocument document;
     protected static PDPage page;
     public static PDFont pdfFont;
-    private final int[] widthArray = new int[] {60, 50, 55, 25, 30, 50, 50, 35, 40, 50, 50, 60, 20, 30};
-    private final String[] headers = new String[] {"Фамилия", "Имя", "Отчество", "Пол", "Возраст",
-            "Дата рождения", "Место рождения", "Индекс", "Страна", "Область", "Город", "Улица",
-            "Дом", "Квартира"};
+    public static PDPageContentStream contentStream;
 
     public void setFont() throws IOException {
         pdfFont = PDType0Font.load(document, new File("D:\\PDF generator\\PDF-generator\\ArialMT.ttf"));
     }
 
-    public void createDoc() {
+    public void createDoc() throws IOException {
         document = new PDDocument();
         page = new PDPage();
         document.addPage(page);
+        startStream();
+        fillTable();
     }
 
-    public PDPageContentStream startStream() throws IOException {
-        PDPageContentStream stream = new PDPageContentStream(document, page);
-        stream.setStrokingColor(Color.DARK_GRAY);
-        stream.setLineWidth(0.5f);
-        setFont();
-        return stream;
+    public void startStream() {
+        try {
+            contentStream = new PDPageContentStream(document, page);
+            contentStream.setStrokingColor(Color.DARK_GRAY);
+            contentStream.setLineWidth(0.5f);
+            setFont();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public void stopStream(PDPageContentStream stream) throws IOException {
-        stream.stroke();
-        stream.close();
+    public void stopStream() throws IOException {
+        contentStream.stroke();
+        contentStream.close();
+    }
+
+    public void fillTable() throws IOException {
+        Table tablePDF = new Table();
+        tablePDF.createTable(PeopleInfoGenerator.assembleAllPeopleInfo());
     }
 
     public void closeDoc() throws IOException {
+        stopStream();
         saveDoc();
         document.close();
     }

@@ -1,5 +1,6 @@
 package org.application;
 
+import org.application.json.ProcessorJSON;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.application.api.WorkingAPI;
@@ -28,7 +29,8 @@ public class PeopleInfoGenerator {
         return numberSet;
     }
 
-    public static String[][] printPeople(JSONArray peoples) throws IOException {
+    public static String[][] assembleAllPeopleInfo() {
+        JSONArray peoples = ProcessorJSON.jsonArray;
         Set<Integer> indexes = generateIndex(peoples.length());
         String[][] res = new String[peoples.length()][14];
         Iterator iterator = indexes.iterator();

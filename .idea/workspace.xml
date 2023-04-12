@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f94cfa8b-91fb-4bf9-8833-f69d407afbc5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PeopleGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/PeopleInfoGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ProcessorJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/json/ProcessorJSON.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RecordPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/pdf/DocumentPDF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WorkingAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/api/WorkingAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/application/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/PeopleInfoGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/PeopleInfoGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/api/WorkingAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/api/WorkingAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/json/ProcessorJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/json/ProcessorJSON.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pdf/DocumentPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/pdf/DocumentPDF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pdf/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/pdf/Table.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/Downloads/pdfbox-3.0.0-alpha3.jar!/org/apache/pdfbox/pdmodel/PDAbstractContentStream.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/Downloads/pdfbox-3.0.0-alpha3.jar!/org/apache/pdfbox/pdmodel/interactive/annotation/layout/PlainTextFormatter.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -48,7 +52,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors"
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -66,7 +70,8 @@
       <workItem from="1681152883674" duration="4362000" />
       <workItem from="1681194339081" duration="6747000" />
       <workItem from="1681209621107" duration="9222000" />
-      <workItem from="1681228584926" duration="15483000" />
+      <workItem from="1681228584926" duration="15910000" />
+      <workItem from="1681286719517" duration="9747000" />
     </task>
     <servers />
   </component>

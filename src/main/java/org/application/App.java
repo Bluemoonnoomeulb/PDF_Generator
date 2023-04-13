@@ -25,6 +25,7 @@ public class App {
         // Передаем JSON на обработку.
         ProcessorJSON.SplitData(json);
 
+        // Создаем документ, заполняем и сохраняем.
         DocumentPDF doc = new DocumentPDF();
         doc.createDoc();
         doc.closeDoc();

@@ -9,7 +9,7 @@ public class WorkingAPI {
 
     final static private String cityOfBirthURI = "https://api.randomdatatools.ru/?unescaped=false&params=City";
     static private String mainInfoURI = "https://api.randomdatatools.ru/?typeName=all&unescaped=false&" +
-            "params=LastName,FirstName,FatherName,Gender,DateOfBirth,YearsOld,Country,Region,City,Street,Apartment,House";
+            "params=LastName,FirstName,FatherName,Gender,DateOfBirth,Country,Region,City,Street,Apartment,House";
 
     public static void setQuantity(int n) { mainInfoURI += "&count=" + n; }
 

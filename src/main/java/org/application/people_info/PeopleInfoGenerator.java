@@ -4,9 +4,6 @@ import org.application.json.ProcessorJSON;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.application.api.WorkingAPI;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -50,8 +47,8 @@ public class PeopleInfoGenerator {
     private static String modifyCity(String city) { return city.substring(3); }
 
     private static String modifyStreet(String street) {
-        if (street.contains(" ул.")) {
-            street = street.substring(0, street.indexOf(" ул."));
+        if (street.contains("ул.")) {
+            street = street.substring(0, street.indexOf("ул."));
         }
         return street;
     }
@@ -65,7 +62,7 @@ public class PeopleInfoGenerator {
     public static String[][] assembleAllPeopleInfo() {
         JSONArray peoples = ProcessorJSON.jsonArray;
         Set<Integer> indexes = generateIndex(peoples.length());
-        String[][] res = new String[peoples.length()][14];
+        String[][] result = new String[peoples.length()][14];
         Iterator<Integer> iterator = indexes.iterator();
 
         for (int i = 0; i < peoples.length(); i++) {
@@ -99,10 +96,8 @@ public class PeopleInfoGenerator {
             personInfo[12] = String.valueOf(person.getInt("House"));
             personInfo[13] = String.valueOf(person.getInt("Apartment"));
 
-            res[i] = personInfo;
+            result[i] = personInfo;
         }
-        return res;
+        return result;
     }
-
-
 }
